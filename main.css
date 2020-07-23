@@ -3,6 +3,32 @@ body {
     font-family: sans-serif;
 }
 
+.button--container {
+    display: flex;
+    justify-content: center;
+}
+
+.button--container button {
+    margin: 5%;
+    padding: 5px 10px;
+    font-size: 25px;
+}
+
+.button--dog {
+    background: #a1f0a2;
+    color: #25a127;
+}
+
+.button--cat {
+    background: #85b9e6;
+    color: #386994;
+}
+
+.button--dino {
+    background: #f2f7ba;
+    color: #b0ac5a;
+}
+
 .pet--container {
     display: flex;
     flex-flow: row wrap;
