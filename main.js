@@ -232,4 +232,56 @@ const pets = [
       printToDom("pet--container", domString);
   }
 
-  buildPetCards();
+  const buildDogCards = () => {
+    let domString = ""
+    for (let i = 0; i < pets.length; i++){
+        if (pets[i].type === "dog"){
+            domString+=`<div class="pet--card">`
+            domString+=` <h1 class="pet--name">${pets[i].name}</h1>`
+            domString+=` <img class="pet--photo" src="${pets[i].imageUrl}" alt="${pets[i].name}">`
+            domString+=` <h2 class="pet--color">${pets[i].color}</h2>`
+            domString+=` <p class="pet--skill">${pets[i].specialSkill}</p>`
+            domString+=` <h2 class="pet--type ${pets[i].type}">${pets[i].type}</h2>`
+            domString+=`</div>`
+        }
+    }
+    printToDom("pet--container", domString);
+}
+
+  const buildCatCards = () => {
+    let domString = ""
+    for (let i = 0; i < pets.length; i++){
+        if (pets[i].type === "cat"){
+            domString+=`<div class="pet--card">`
+            domString+=` <h1 class="pet--name">${pets[i].name}</h1>`
+            domString+=` <img class="pet--photo" src="${pets[i].imageUrl}" alt="${pets[i].name}">`
+            domString+=` <h2 class="pet--color">${pets[i].color}</h2>`
+            domString+=` <p class="pet--skill">${pets[i].specialSkill}</p>`
+            domString+=` <h2 class="pet--type ${pets[i].type}">${pets[i].type}</h2>`
+            domString+=`</div>`
+        }
+    }
+    printToDom("pet--container", domString);
+}
+
+  const buildDinoCards = () => {
+    let domString = ""
+    for (let i = 0; i < pets.length; i++){
+        if (pets[i].type === "dino"){
+            domString+=`<div class="pet--card">`
+            domString+=` <h1 class="pet--name">${pets[i].name}</h1>`
+            domString+=` <img class="pet--photo" src="${pets[i].imageUrl}" alt="${pets[i].name}">`
+            domString+=` <h2 class="pet--color">${pets[i].color}</h2>`
+            domString+=` <p class="pet--skill">${pets[i].specialSkill}</p>`
+            domString+=` <h2 class="pet--type ${pets[i].type}">${pets[i].type}</h2>`
+            domString+=`</div>`
+        }
+    }
+    printToDom("pet--container", domString);
+}
+
+buildPetCards();
+document.getElementById("button--dog").addEventListener("click", buildDogCards);
+document.getElementById("button--cat").addEventListener("click", buildCatCards);
+document.getElementById("button--dino").addEventListener("click", buildDinoCards);
+document.getElementById("button--all").addEventListener("click", buildPetCards);
