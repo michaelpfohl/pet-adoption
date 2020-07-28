@@ -213,75 +213,62 @@ const pets = [
     }
   ];
 
-  const printToDom = (divID, textToPrint) => {
-      const selectedDiv = document.getElementById(divID);
-      selectedDiv.innerHTML = textToPrint;
+const handleButtonClick = (e) => {
+  const buttonId = e.target.id;
+  const selectedPets =[]
+
+  for (let i = 0; i < pets.length; i++) {
+    if(pets[i].type === buttonId) {
+      selectedPets.push(pets[i]);
+    }
   }
 
-  const buildPetCards = () => {
-      let domString = ""
-      for (let i = 0; i < pets.length; i++){
-          domString+=`<div class="pet--card">`
-          domString+=` <h1 class="pet--name">${pets[i].name}</h1>`
-          domString+=` <img class="pet--photo" src="${pets[i].imageUrl}" alt="${pets[i].name}">`
-          domString+=` <h2 class="pet--color">${pets[i].color}</h2>`
-          domString+=` <p class="pet--skill">${pets[i].specialSkill}</p>`
-          domString+=` <h2 class="pet--type ${pets[i].type}">${pets[i].type}</h2>`
-          domString+=`</div>`
-      }
-      printToDom("pet--container", domString);
+  const bodySelector = document.querySelector('body');
+
+  if (buttonId === 'dog') {
+    bodySelector.style.background = '';
+  } else if (buttonId === 'cat') {
+    bodySelector.style.background = '';
+  } else if (buttonId === 'dino') {
+    bodySelector.style.background = '';
+  } else {
+    bodySelector.style.background = 'lavender';
   }
 
-  const buildDogCards = () => {
+  if (buttonId === 'all' || buttonId === e.currentTarget.id) {
+    buildPetCards(pets);
+  } else {
+    buildPetCards(selectedPets);
+  }
+}
+
+
+const printToDom = (divID, textToPrint) => {
+    const selectedDiv = document.getElementById(divID);
+    selectedDiv.innerHTML = textToPrint;
+}
+
+const buildPetCards = (arg) => {
     let domString = ""
-    for (let i = 0; i < pets.length; i++){
-        if (pets[i].type === "dog"){
-            domString+=`<div class="pet--card">`
-            domString+=` <h1 class="pet--name">${pets[i].name}</h1>`
-            domString+=` <img class="pet--photo" src="${pets[i].imageUrl}" alt="${pets[i].name}">`
-            domString+=` <h2 class="pet--color">${pets[i].color}</h2>`
-            domString+=` <p class="pet--skill">${pets[i].specialSkill}</p>`
-            domString+=` <h2 class="pet--type ${pets[i].type}">${pets[i].type}</h2>`
-            domString+=`</div>`
-        }
+    for (let i = 0; i < arg.length; i++){
+        domString+=`<div class="pet--card">`
+        domString+=` <h1 class="pet--name">${arg[i].name}</h1>`
+        domString+=` <img class="pet--photo" src="${arg[i].imageUrl}" alt="${arg[i].name}">`
+        domString+=` <h2 class="pet--color">${arg[i].color}</h2>`
+        domString+=` <p class="pet--skill">${arg[i].specialSkill}</p>`
+        domString+=` <h2 class="pet--type ${arg[i].type}">${arg[i].type}</h2>`
+        domString+=`</div>`
     }
     printToDom("pet--container", domString);
 }
 
-  const buildCatCards = () => {
-    let domString = ""
-    for (let i = 0; i < pets.length; i++){
-        if (pets[i].type === "cat"){
-            domString+=`<div class="pet--card">`
-            domString+=` <h1 class="pet--name">${pets[i].name}</h1>`
-            domString+=` <img class="pet--photo" src="${pets[i].imageUrl}" alt="${pets[i].name}">`
-            domString+=` <h2 class="pet--color">${pets[i].color}</h2>`
-            domString+=` <p class="pet--skill">${pets[i].specialSkill}</p>`
-            domString+=` <h2 class="pet--type ${pets[i].type}">${pets[i].type}</h2>`
-            domString+=`</div>`
-        }
-    }
-    printToDom("pet--container", domString);
+const buttonEvents = () => {
+  document.querySelector('#button-container').addEventListener('click', handleButtonClick);
 }
 
-  const buildDinoCards = () => {
-    let domString = ""
-    for (let i = 0; i < pets.length; i++){
-        if (pets[i].type === "dino"){
-            domString+=`<div class="pet--card">`
-            domString+=` <h1 class="pet--name">${pets[i].name}</h1>`
-            domString+=` <img class="pet--photo" src="${pets[i].imageUrl}" alt="${pets[i].name}">`
-            domString+=` <h2 class="pet--color">${pets[i].color}</h2>`
-            domString+=` <p class="pet--skill">${pets[i].specialSkill}</p>`
-            domString+=` <h2 class="pet--type ${pets[i].type}">${pets[i].type}</h2>`
-            domString+=`</div>`
-        }
-    }
-    printToDom("pet--container", domString);
+const init = () => {
+  buttonEvents();
+  buildPetCards(pets);
 }
 
-buildPetCards();
-document.getElementById("button--dog").addEventListener("click", buildDogCards);
-document.getElementById("button--cat").addEventListener("click", buildCatCards);
-document.getElementById("button--dino").addEventListener("click", buildDinoCards);
-document.getElementById("button--all").addEventListener("click", buildPetCards);
+init();
