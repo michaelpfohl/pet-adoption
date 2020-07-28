@@ -226,11 +226,11 @@ const handleButtonClick = (e) => {
   const bodySelector = document.querySelector('body');
 
   if (buttonId === 'dog') {
-    bodySelector.style.background = '';
+    bodySelector.style.background = '#c7ffcd';
   } else if (buttonId === 'cat') {
-    bodySelector.style.background = '';
+    bodySelector.style.background = '#d6e1ff';
   } else if (buttonId === 'dino') {
-    bodySelector.style.background = '';
+    bodySelector.style.background = '#feffd6';
   } else {
     bodySelector.style.background = 'lavender';
   }
