@@ -10,4 +10,5 @@ A single page application showing cards of pets up for adoption.
 ![GIF of Page](pet-adoption.gif)
 
 Deployed via Netlify [here.](https://pet-adoption-michael-pfohl.netlify.app/)
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/c6a6636a-c73f-4ff9-96a6-b2b25d903e90/deploy-status)](https://app.netlify.com/sites/pet-adoption-michael-pfohl/deploys)
